@@ -14,23 +14,29 @@
     <div class="container">
         <div class="app-wrapper">
         <div class="weather-app">
-            <h1>
-                Knoxville
-            </h1>
-            <ul>
-                <li>
-                    Saturday 6:00 PM
-                </li>
-                <li>
-                    Mostly sunny
-                </li>
-            </ul>
+            <div class="overview">
+                <h1>
+                    Knoxville
+                </h1>
+                <ul>
+                    <li>
+                        Saturday 6:00 PM
+                    </li>
+                    <li>
+                        Mostly Sunny
+                    </li>
+                </ul>
+            </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="mostly sunny" />
-                    77°F | °C
+                <div class="col-6">
+                    <div class="clearfix weather-temperature">
+                        <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="Mostly Sunny" class="float-left" />
+                        <span class="float-left">
+                            <strong>77</strong><span class="units">°F | °C</span>
+                        </span>
+                    </div>    
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                     <ul>
                         <li>
                             Precipitation: 0%
@@ -43,14 +49,14 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>   
         </div>
+        <small>
+                <a href="https://github.com/hotkiss1011/vanilla-weather-app">Open source code</a>
+                by Amanda Hotchkiss
+        </small>
         </div>
     </div>
-    <small>
-        <a href="">Open source code</a>
-        by Amanda Hotchkiss
-    </small>
     <script src="src/app.js"></script>
 </body>
 </html>
