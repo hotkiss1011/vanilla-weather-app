@@ -1,3 +1,23 @@
+function formatDate(timestamp) {
+    let date = new Date(timestamp);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes =`0${minutes}`;
+    }
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let day = days[date.getDay()];
+    return `${day} ${hours}:${minutes}`;
+}
+
 function displayTemp(response) {
     console.log(response.data);
     let tempElement = document.querySelector("#temp");
@@ -14,10 +34,14 @@ function displayTemp(response) {
 
     let windElement = document.querySelector("#wind");
     windElement.innerHTML = Math.round(response.data.wind.speed);
+
+    let dateElement = document.querySelector("#date");
+    dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 let key = "05992a658e151609dfa497fc6c2796f2";
+let city = "Paris";
 let apiUrl =
-  `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${key}&units=imperial`;
+  `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
 
   axios.get(apiUrl).then(displayTemp)
