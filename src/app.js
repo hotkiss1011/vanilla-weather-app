@@ -37,10 +37,14 @@ function displayTemp(response) {
 
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let key = "05992a658e151609dfa497fc6c2796f2";
-let city = "Paris";
+let city = "San Francisco";
 let apiUrl =
   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
 
