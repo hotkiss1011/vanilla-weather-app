@@ -26,8 +26,8 @@ function displayTemp(response) {
     let cityElement = document.querySelector("#city");
     cityElement.innerHTML = response.data.name;
 
-    let description = document.querySelector("#description");
-    description.innerHTML = response.data.weather[0].description;
+    let descriptionElement = document.querySelector("#description");
+    descriptionElement.innerHTML = response.data.weather[0].description;
 
     let humidityElement = document.querySelector("#humidity");
     humidityElement.innerHTML = response.data.main.humidity;
@@ -43,9 +43,21 @@ function displayTemp(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let key = "05992a658e151609dfa497fc6c2796f2";
-let city = "San Francisco";
-let apiUrl =
-  `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
+  function search(city) {
+    let key = "05992a658e151609dfa497fc6c2796f2";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
 
-  axios.get(apiUrl).then(displayTemp)
+    axios.get(apiUrl).then(displayTemp);
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value);
+    console.log(cityInputElement.value);
+  }
+  
+  let form = document.querySelector("#search-form");
+  form.addEventListener("submit", handleSubmit);
+
+  search("New York")
