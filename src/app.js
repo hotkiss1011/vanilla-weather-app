@@ -54,6 +54,8 @@ function search(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
 
   axios.get(apiUrl).then(displayTemp);
+
+  form.reset();
 }
 
 function handleSubmit(event) {
@@ -63,8 +65,6 @@ function handleSubmit(event) {
 
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
-
-  document.getElementById("search-form").value = '';
 }
 
 function showCelsius(event) {
